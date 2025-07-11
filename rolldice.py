@@ -1,3 +1,4 @@
+import random
 #Write a function that takes as input number of dice and number of sides. The function will then return a list
 #of randomly generated numbers in the proper count and range. For example if the the function is asked to generate
 #3D6 or three sixed sided dice, then a potential output would be [2,2,6]
@@ -18,4 +19,23 @@
 # How many dice to roll? 20
 # How many sides? 20
 # Here are the results: [18, 19, 6, 8, 13, 6, 6, 6, 18, 12, 20, 10, 14, 8, 14, 17, 12, 15, 20, 17]
+
+def roll_dice(num_dice, num_sides):
+    results = []
+    for _ in range(num_dice):
+        roll = random.randint(1, num_sides)
+        results.append(roll)
+    return results
+
+try:
+    num_dice = int(input("How many dice to roll? "))
+    num_sides = int(input("How many sides? "))
+
+    if(num_dice <= 0 or num_sides <= 1):
+        print("Error: Dice count must be greater than 0 and sides greater than 1")
+    else:
+        results = roll_dice(num_dice, num_sides)
+        print("Here are the results: ", results)
+except ValueError:
+    print("Error: Please enter valid integers!")
 
